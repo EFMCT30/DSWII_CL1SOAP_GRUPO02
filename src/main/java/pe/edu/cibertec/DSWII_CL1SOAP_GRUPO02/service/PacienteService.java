@@ -33,9 +33,9 @@ public class PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-    public Paciente buscarPaciente(String nombre, String apellido) {
-        return pacienteRepository.findByNomPacienteAndApePaciente(nombre, apellido);
-    }
+   // public Paciente buscarPaciente(String nombre, String apellido) {
+  //      return pacienteRepository.findByNomPacienteAndApePaciente(nombre, apellido);
+  //  }
 
     public Paciente actualizarPaciente(Integer id, Paciente pacienteActualizado) {
         Optional<Paciente> paciente = pacienteRepository.findById(id);

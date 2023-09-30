@@ -29,7 +29,7 @@ public class PacienteEndPoint {
                                              GetPacientesRequest request){
         GetPacientesResponse response = new GetPacientesResponse();
         List<Pacientews> pacientewsList = pacienteConvert
-          .convertPacienteToPacienteWs(pacienteRepository.findAll());
+                .convertPacienteToPacienteWs(pacienteRepository.findAll());
 
         response.getPacientes().addAll(pacientewsList);
         return response;
@@ -48,7 +48,7 @@ public class PacienteEndPoint {
         return response;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "postPacientesRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "postPacienteRequest")
     @ResponsePayload
     public PostPacienteResponse postPaciente(@RequestPayload
                                              PostPacienteRequest request){
