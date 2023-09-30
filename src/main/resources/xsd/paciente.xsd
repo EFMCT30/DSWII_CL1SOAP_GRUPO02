@@ -54,7 +54,7 @@
             <xs:element name="nompaciente" type="xs:string"/>
             <xs:element name="apepaciente" type="xs:string"/>
             <xs:element name="docpaciente" type="xs:string"/>
-            <xs:element name="fechanacpaciente" type="xs:date"/>
+            <xs:element name="fechanacpaciente" type="xs:string"/>
             <xs:element name="emailpaciente" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
+
 @Getter
 @Setter
 @Entity
@@ -21,7 +22,7 @@ public class Paciente {
     @Column(name = "docpaciente")
     private String docpaciente;
     @Column(name = "fechanacpaciente")
-    private Date fechanacpaciente;
+    private String fechanacpaciente;
     @Column(name = "emailpaciente")
     private String emailpaciente;
 }
