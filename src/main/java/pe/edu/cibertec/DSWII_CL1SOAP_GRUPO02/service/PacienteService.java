@@ -33,4 +33,24 @@ public class PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-}
+    public Paciente buscarPaciente(String nombre, String apellido) {
+        return pacienteRepository.findByNomPacienteAndApePaciente(nombre, apellido);
+    }
+
+    public Paciente actualizarPaciente(Integer id, Paciente pacienteActualizado) {
+        Optional<Paciente> paciente = pacienteRepository.findById(id);
+        if (paciente.isEmpty()) {
+            return null;
+        }
+        Paciente pacienteExistente = paciente.get();
+        pacienteExistente.setNompaciente(pacienteActualizado.getNompaciente());
+        pacienteExistente.setApepaciente(pacienteActualizado.getApepaciente());
+        pacienteExistente.setDocpaciente(pacienteActualizado.getDocpaciente());
+        pacienteExistente.setFechanacpaciente(pacienteActualizado.getFechanacpaciente());
+        pacienteExistente.setEmailpaciente(pacienteActualizado.getEmailpaciente());
+
+        return pacienteRepository.save(pacienteExistente);
+   }
+
+
+    }

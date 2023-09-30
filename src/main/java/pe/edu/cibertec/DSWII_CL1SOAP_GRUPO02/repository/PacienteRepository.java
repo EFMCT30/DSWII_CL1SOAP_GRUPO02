@@ -6,4 +6,5 @@ import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.model.Paciente;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
+    Paciente findByNomPacienteAndApePaciente(String nombre, String apellido);
 }
