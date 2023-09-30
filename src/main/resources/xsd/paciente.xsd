@@ -48,6 +48,42 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- Buscar Paciente -->
+    <xs:element name="buscarPacienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="apellido" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="buscarPacienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Actualizar Paciente -->
+    <xs:element name="actualizarPacienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+                <xs:element name="pacienteActualizado" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="actualizarPacienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="pacientews">
         <xs:sequence>
             <xs:element name="idpaciente" type="xs:int"/>
