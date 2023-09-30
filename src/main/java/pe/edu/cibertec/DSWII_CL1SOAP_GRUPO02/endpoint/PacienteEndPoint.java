@@ -1,5 +1,6 @@
 package pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.endpoint;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -12,12 +13,14 @@ import pe.edu.cibertec.ws.objects.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Endpoint
 public class PacienteEndPoint {
     private static final String NAMESPACE_URI = "http://www.cibertec.edu.pe/ws/objects";
     @Autowired
     private PacienteRepository pacienteRepository;
-    @Autowired
+
+
     private PacienteConvert pacienteConvert;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPacientesRequest")
@@ -26,14 +29,14 @@ public class PacienteEndPoint {
                                              GetPacientesRequest request){
         GetPacientesResponse response = new GetPacientesResponse();
         List<Pacientews> pacientewsList = pacienteConvert
-         //       .convertPacienteToPacienteWs(pacienteConvert.findAll());
-        //        .convertPacienteToPacienteWs(pacienteConvert.findAll());
+          .convertPacienteToPacienteWs(pacienteRepository.findAll());
+
         response.getPacientes().addAll(pacientewsList);
         return response;
     }
 
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPacientesRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPacienteRequest")
     @ResponsePayload
     public GetPacienteResponse getPacientesXId(@RequestPayload
                                                GetPacienteRequest request){

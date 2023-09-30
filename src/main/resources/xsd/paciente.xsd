@@ -28,7 +28,7 @@
     <xs:element name="getPacienteResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="paciente" type="tns:pacientews"/>
+                <xs:element name="paciente" type="tns:pacientews" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
