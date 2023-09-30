@@ -7,6 +7,7 @@ import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.repository.PacienteRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PacienteService {
@@ -51,6 +52,14 @@ public class PacienteService {
 
         return pacienteRepository.save(pacienteExistente);
    }
+
+    public List<Paciente> findByNomPaciente(String nombre) {
+        // Utiliza el método findAll del repositorio y luego filtra los resultados por nombre.
+        return pacienteRepository.findAll()
+                .stream()
+                .filter(paciente -> paciente.getNompaciente().equalsIgnoreCase(nombre))
+                .collect(Collectors.toList());
+    }
 
 
     }

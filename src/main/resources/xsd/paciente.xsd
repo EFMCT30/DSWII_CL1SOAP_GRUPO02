@@ -64,6 +64,25 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- Find by Nombre -->
+    <xs:element name="getPacientesByNombreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getPacientesByNombreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pacientes" type="tns:pacientews" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ... Resto de las definiciones ... -->
+
+
     <xs:complexType name="pacientews">
         <xs:sequence>
             <xs:element name="idpaciente" type="xs:int"/>

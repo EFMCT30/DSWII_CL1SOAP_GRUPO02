@@ -9,6 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.converter.PacienteConvert;
 import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.model.Paciente;
 import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.repository.PacienteRepository;
+import pe.edu.cibertec.DSWII_CL1SOAP_GRUPO02.service.PacienteService;
 import pe.edu.cibertec.ws.objects.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class PacienteEndPoint {
     private static final String NAMESPACE_URI = "http://www.cibertec.edu.pe/ws/objects";
     @Autowired
     private PacienteRepository pacienteRepository;
-
-
+    @Autowired
+    private PacienteService pacienteService;
     private PacienteConvert pacienteConvert;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPacientesRequest")
@@ -96,6 +97,22 @@ public class PacienteEndPoint {
             // Aquí se asume que simplemente retornas null en la respuesta
             response.setPaciente(null);
         }
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPacientesByNombreRequest")
+    @ResponsePayload
+    public GetPacientesResponse getPacientesByNombre(@RequestPayload GetPacientesByNombreRequest request) {
+        GetPacientesResponse response = new GetPacientesResponse();
+        String nombre = request.getNombre(); // Obtener el nombre del request
+
+        // Llamar al servicio para buscar pacientes por nombre
+        List<Paciente> pacientes = pacienteService.findByNomPaciente(nombre);
+
+        // Convertir la lista de pacientes a la representación WS y asignarla a la respuesta
+        List<Pacientews> pacientewsList = pacienteConvert.convertPacienteToPacienteWs(pacientes);
+        response.getPacientes().addAll(pacientewsList);
 
         return response;
     }
